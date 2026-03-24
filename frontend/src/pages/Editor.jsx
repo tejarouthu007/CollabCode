@@ -392,7 +392,7 @@ const Editor = ({roomId, username}) => {
           <div className="w-80 bg-gray-900 h-full pl-1 text-gray-300 overflow-auto">
             {activeTab === "files" && <FilePanel roomId={roomId} username={username} files={files} setFiles={setFiles} activeFile={activeFile} setActiveFile={setActiveFile} />}
             {activeTab === "run" && <RunCode code={activeFile.content} language={activeFile.language} />}
-            {activeTab === "execute" && <Execute files={files} />}
+            {activeTab === "execute" && <Execute files={files} activeFile={activeFile}/>}
             {activeTab === "chat" && <Chat roomId={roomId} username={username} />}
             {activeTab === "ai" && <Assistant handleCodeChange={handleCodeChange} language={activeFile.language} currentExtension={currentExtension} selectedTheme={selectedTheme} themes={themes}/>}
             {activeTab === "users" && <UserList roomId={roomId}/>}

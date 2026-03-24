@@ -10,12 +10,12 @@ router.post("/generate", async (req, res) => {
   let { prompt } = req.body;
 
   prompt = `
-Your job is to generate only code with inline comments.
-Do not include explanations, markdown code fences, or extra text.
-Return only valid code.
+  Your job is to generate only code with inline comments.
+  Do not include explanations, markdown code fences, or extra text.
+  Return only valid code.
 
-${prompt}
-`;
+  ${prompt}
+  `;
 
   try {
 
