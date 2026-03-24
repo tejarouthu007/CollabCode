@@ -45,15 +45,15 @@ const Home = ({ roomId, setRoomId, username, setUsername }) => {
       <div className="text-center mb-10">
         <div className="mb-4">
           <div className="w-16 h-16 mx-auto bg-gradient-to-tr from-blue-800 via-blue-600 to-blue-400 rounded-full flex items-center justify-center text-2xl font-bold">
-            NX
+            CC
           </div>
         </div>
         <h1 className="text-4xl font-extrabold mb-2 tracking-tight">
-          Nexus Code Editor
+          CollabCode Editor
         </h1>
-        <p className="text-gray-400 text-lg max-w-xl mx-auto">
+        {/* <p className="text-gray-400 text-lg max-w-xl mx-auto">
           Collaborate in real-time with powerful language support, chat, themes, and instant execution.
-        </p>
+        </p> */}
       </div>
 
       {/* Join Room Form */}

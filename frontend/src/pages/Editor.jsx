@@ -39,7 +39,7 @@ import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 import { markdown } from "@codemirror/lang-markdown";
 
-import { FolderClosed, Play, MessageSquare, User, Sparkles, Code2Icon, LogOut, Info} from "lucide-react";
+import { FolderClosed, Play, MessageSquare, User, Sparkles, Code2Icon, LogOut, Info, Terminal, TerminalSquare} from "lucide-react";
 import { EVENTS } from "../constants/events";
 import Chat from "../components/Chat";
 import RunCode from "../components/RunCode";
@@ -47,6 +47,7 @@ import UserList from "../components/UserList";
 import createRemoteCursorPlugin from "../components/Cursor.js"
 import FilePanel from "../components/FilePanel.jsx";
 import Assistant from "../components/Assistant.jsx";
+import Execute from "../components/Execute.jsx";
 
 const languageMap = {
   javascript,
@@ -356,6 +357,9 @@ const Editor = ({roomId, username}) => {
           <button onClick={() => setActiveTab(activeTab === "run" ? null : "run")}>
             <Play className={`hover:text-blue-500 ${activeTab=="run"? "text-blue-500": "text-gray-300"}`} size={24} />
           </button>
+          <button onClick={() => setActiveTab(activeTab === "execute" ? null : "execute")}>
+            <Terminal className={`hover:text-blue-500 ${activeTab=="execute"? "text-blue-500": "text-gray-300"}`} size={24} />
+          </button>
           <button onClick={() => setActiveTab(activeTab === "chat" ? null : "chat")}>
             <MessageSquare className={`hover:text-blue-500 ${activeTab=="chat"? "text-blue-500": "text-gray-300"}`} size={24} />
           </button>
@@ -388,6 +392,7 @@ const Editor = ({roomId, username}) => {
           <div className="w-80 bg-gray-900 h-full pl-1 text-gray-300 overflow-auto">
             {activeTab === "files" && <FilePanel roomId={roomId} username={username} files={files} setFiles={setFiles} activeFile={activeFile} setActiveFile={setActiveFile} />}
             {activeTab === "run" && <RunCode code={activeFile.content} language={activeFile.language} />}
+            {activeTab === "execute" && <Execute files={files} activeFile={activeFile}/>}
             {activeTab === "chat" && <Chat roomId={roomId} username={username} />}
             {activeTab === "ai" && <Assistant handleCodeChange={handleCodeChange} language={activeFile.language} currentExtension={currentExtension} selectedTheme={selectedTheme} themes={themes}/>}
             {activeTab === "users" && <UserList roomId={roomId}/>}
@@ -400,7 +405,7 @@ const Editor = ({roomId, username}) => {
         <div className="flex justify-between items-center bg-gray-800 p-3 text-white gap-4 rounded-lg">
           <div className="flex items-center flex-row gap-2 items-center">
             <Code2Icon size={28}/>
-            <span className="text-green-500 font-bold text-xl tracking-tight bg-gradient-to-tr text-transparent bg-clip-text from-blue-400 via-blue-600 to-blue-800">Nexus Code Editor</span>
+            <span className="text-green-500 font-bold text-xl tracking-tight bg-gradient-to-tr text-transparent bg-clip-text from-blue-400 via-blue-600 to-blue-800">CollabCode Editor</span>
           </div>
 
           <div className="flex gap-3 items-center">

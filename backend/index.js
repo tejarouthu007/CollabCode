@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: ["https://nexus-editor-live.vercel.app", "http://localhost:5173"],
+        origin: ["https://collab-code-prod-001.vercel.app", "http://localhost:5173"],
         methods: ["GET", "POST"],
         credentials: true,
     },
@@ -28,7 +28,6 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use('/api/ai', aiRoutes);
-
 
 const PORT = process.env.PORT || 5000;
 
